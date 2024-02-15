@@ -1,10 +1,10 @@
 # 📅 Desktop Timetable Generator
 
-![GitHub stars](https://img.shields.io/github/stars/f3n1b00t/desktoptimetable?style=social)
-![GitHub forks](https://img.shields.io/github/forks/f3n1b00t/desktoptimetable?style=social)
-![GitHub issues](https://img.shields.io/github/issues/f3n1b00t/desktoptimetable)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/f3n1b00t/desktoptimetable)
-![GitHub license](https://img.shields.io/github/license/f3n1b00t/desktoptimetable)
+![GitHub stars](https://img.shields.io/github/stars/f3n1b00t/desktop-timetable?style=social)
+![GitHub forks](https://img.shields.io/github/forks/f3n1b00t/desktop-timetable?style=social)
+![GitHub issues](https://img.shields.io/github/issues/f3n1b00t/desktop-timetable)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/f3n1b00t/desktop-timetable)
+![GitHub license](https://img.shields.io/github/license/f3n1b00t/desktop-timetable)
 
 **Desktop Timetable Generator is a tool that facilitates the generation of timetables for teachers.**
 
@@ -32,8 +32,8 @@ To run the project, follow these steps:
 ### Building on Windows
 1. Clone the repository:
    ```bash
-   git clone https://github.com/f3n1b00t/desktoptimetable.git
-   cd desktoptimetable
+   git clone --recurse-submodules https://github.com/f3n1b00t/desktop-timetable.git
+   cd desktop-timetable
    ```
 2. Make dir for build:
    ```bash
@@ -52,8 +52,8 @@ To run the project, follow these steps:
 ### Building on Linux
 1. Clone the repository:
    ```bash
-   git clone https://github.com/f3n1b00t/desktoptimetable.git
-   cd desktoptimetable
+   git clone --recurse-submodules https://github.com/f3n1b00t/desktop-timetable.git
+   cd desktop-timetable
    ```
 2. Make dir for build:
    ```bash
