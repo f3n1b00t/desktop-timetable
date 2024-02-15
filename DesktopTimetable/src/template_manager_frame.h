@@ -8,15 +8,13 @@
 #include "template_create_frame.h"
 #include "template_manager.h"
 
-class template_manager_frame final : public wxFrame
-{
+class template_manager_frame final : public wxFrame {
 public:
     template_manager_frame();
 
-    void on_load_button_click([[maybe_unused]] wxCommandEvent& event)
-    {
+    void on_load_button_click([[maybe_unused]] wxCommandEvent &event) {
         wxFileDialog open_file_dialog(this, wxT("Выберите файл шаблона"), wxEmptyString, wxEmptyString,
-                                    wxT("Все файлы (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
+                                      wxT("Все файлы (*.*)|*.*"), wxFD_OPEN | wxFD_FILE_MUST_EXIST);
 
         if (open_file_dialog.ShowModal() == wxID_CANCEL)
             return;
@@ -32,73 +30,64 @@ public:
 
         templates_list_box_->Append(loaded_template.get_template_name());
 
-        wxMessageBox(wxString(wxT("Шаблон успешно загружен!")) + selected_file, wxT("Информация"), wxOK | wxICON_INFORMATION);
+        wxMessageBox(wxString(wxT("Шаблон успешно загружен!")) + selected_file, wxT("Информация"),
+                     wxOK | wxICON_INFORMATION);
     }
 
-    void on_save_button_click([[maybe_unused]] wxCommandEvent& event)
-    {
+    void on_save_button_click([[maybe_unused]] wxCommandEvent &event) {
         wxFileDialog save_file_dialog(this, wxT("Сохранить шаблон"), wxEmptyString, wxEmptyString,
-                            wxT("Все файлы (*.json)|*.json"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+                                      wxT("Все файлы (*.json)|*.json"), wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
 
-        if (save_file_dialog.ShowModal() == wxID_CANCEL)
-        {
+        if (save_file_dialog.ShowModal() == wxID_CANCEL) {
             return;
         }
 
-        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND)
-        {
+        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND) {
             template_manager::get_instance().get_template(
-                templates_list_box_->GetString(selected_index).ToStdString()
+                    templates_list_box_->GetString(selected_index).ToStdString()
             ).save_to_file(save_file_dialog.GetPath().ToStdString());
 
             wxMessageBox(wxT("Шаблон успешно сохранен!"), wxT("Информация"), wxOK | wxICON_INFORMATION);
         }
-        
+
     }
 
-    void refresh() const
-    {
+    void refresh() const {
         templates_list_box_->Clear();
 
-        for (const auto& [pair_name, pair]: template_manager::get_instance().get_templates())
-        {
+        for (const auto &[pair_name, pair]: template_manager::get_instance().get_templates()) {
             templates_list_box_->Append(pair_name);
         }
     }
 
-    void on_edit_button_click([[maybe_unused]] wxCommandEvent& event)
-    {
-        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND)
-        {
+    void on_edit_button_click([[maybe_unused]] wxCommandEvent &event) {
+        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND) {
             const auto template_name = templates_list_box_->GetString(selected_index).ToStdString();
-            
+
             auto selected_template = template_manager::get_instance().get_template(
-                template_name
+                    template_name
             );
 
-            auto* frame = new template_create_frame(
-                [this]{this->refresh();},
-                selected_template
+            auto *frame = new template_create_frame(
+                    [this] { this->refresh(); },
+                    selected_template
             );
 
             frame->Show(true);
         }
     }
-    
-    void on_delete_button_click([[maybe_unused]] wxCommandEvent& event)
-    {
-        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND)
-        {
+
+    void on_delete_button_click([[maybe_unused]] wxCommandEvent &event) {
+        if (const int selected_index = templates_list_box_->GetSelection(); selected_index != wxNOT_FOUND) {
             template_manager::get_instance().remove_template(
-                templates_list_box_->GetString(selected_index).ToStdString()
+                    templates_list_box_->GetString(selected_index).ToStdString()
             );
-            
+
             templates_list_box_->Delete(selected_index);
         }
     }
 
-    void on_create_button_click([[maybe_unused]] wxCommandEvent& event)
-    {
+    void on_create_button_click([[maybe_unused]] wxCommandEvent &event) {
         excel_template default_template;
         default_template.add_day_marker(day_of_week::monday, 16);
         default_template.add_day_marker(day_of_week::tuesday, 29);
@@ -119,11 +108,11 @@ public:
 
         default_template.set_pairs_per_day(6);
 
-        auto* frame = new template_create_frame([this]{this->refresh();}, default_template);
+        auto *frame = new template_create_frame([this] { this->refresh(); }, default_template);
         frame->Show(true);
     }
 
 private:
-    wxListBox* templates_list_box_;
+    wxListBox *templates_list_box_;
 };
 
