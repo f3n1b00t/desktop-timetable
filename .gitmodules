@@ -1,0 +1,9 @@
+[submodule "DesktopTimetable/3rdparty/OpenXLSX"]
+	path = DesktopTimetable/3rdparty/OpenXLSX
+	url = https://github.com/troldal/OpenXLSX
+[submodule "DesktopTimetable/3rdparty/wxWidgets"]
+	path = DesktopTimetable/3rdparty/wxWidgets
+	url = https://github.com/wxWidgets/wxWidgets
+[submodule "DesktopTimetable/3rdparty/json"]
+	path = DesktopTimetable/3rdparty/json
+	url = https://github.com/nlohmann/json
