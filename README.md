@@ -1,11 +1,5 @@
 # 📅 Desktop Timetable Generator
 
-![GitHub stars](https://img.shields.io/github/stars/f3n1b00t/desktop-timetable?style=social)
-![GitHub forks](https://img.shields.io/github/forks/f3n1b00t/desktop-timetable?style=social)
-![GitHub issues](https://img.shields.io/github/issues/f3n1b00t/desktop-timetable)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/f3n1b00t/desktop-timetable)
-![GitHub license](https://img.shields.io/github/license/f3n1b00t/desktop-timetable)
-
 **Desktop Timetable Generator is a tool that facilitates the generation of timetables for teachers.**
 
 ## 🚀 Key Features
